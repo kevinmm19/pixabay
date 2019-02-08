@@ -1,5 +1,5 @@
 <template>
-  <div class="template-wrapper">
+  <div id="app" class="js-app wrapper">
     <Search />
     <section class="message" v-if="loading">
         <Message :css="'message--big'" :msg="'Loading carousel images...'" />
@@ -35,88 +35,24 @@
 </template>
 
 <script>
-import { EventBus } from '../event-bus.js';
+import { mapState } from 'vuex';
 import Message from "./Message.vue";
 import Search from "./Search.vue";
 export default {
-  name: 'Carousel',
+  name: 'app',
   components: {
     Search,
     Message
   },
   data: function () {
     return {
-        //search: '',
-        images: [],
-        activeSlide: 0,
-        //timeout: 0,
-        loading: false,
-        error429: false,
-        errorFetch: false
+        activeSlide: 0
     }
   },
-  async mounted() {
-    // await this.find();
-    // this.$refs.searchInput.removeAttribute('disabled');
-    // this.debounceFind = this.debounce(this.find, 250);
-    //EventBus.$on('search-ready', displaySlide);
-  },
-  destroyed() {
-    clearTimeout(this.timeout);
-  },
-  watch: {
-    // search() {
-    //     this.loading = true;
-    //     this.debounceFind();
-    // }
+  computed:{
+   ...mapState(['images','loading','error429','errorFetch'])
   },
   methods: {
-    displaySlide(list) {
-        list.forEach(element => {
-            console.log(element.tags);
-        });
-        this.images = [];
-        this.images.concat(list);
-    },
-    // debounce(func, wait, immediate) {
-    //     return function() {
-    //         let context = this, args = arguments;
-    //         let later = function() {
-    //         this.timeout = null;
-    //         if (!immediate) func.apply(context, args);
-    //         };
-    //         let callNow = immediate && !this.timeout;
-    //         clearTimeout(this.timeout);
-    //         this.timeout = setTimeout(later, wait);
-    //         if (callNow) func.apply(context, args);
-    //     };
-    // },
-    // async find() {
-    //     try {
-    //         const url = 'https://pixabay.com/api/?key=9656065-a4094594c34f9ac14c7fc4c39&per_page=6&q=' + this.search;
-    //         const headers = new Headers({
-    //             'Content-Type': 'text/plain'
-    //         });
-    //         const response = await fetch(url, { 
-    //             method: 'GET',
-    //             mode: 'cors',
-    //             headers: headers
-    //         });
-    //         if (response !== undefined && response.ok) {
-    //             const images = await response.json();
-    //             this.images = images.hits;
-    //             this.error429 = false;
-    //         } else {
-    //             this.error429 = true;
-    //         }
-    //         this.loading = false;
-    //         this.errorFetch = false;
-    //     } catch (error) {
-    //         this.errorFetch = true;
-    //         this.error429 = false;
-    //         this.loading = false;
-    //     }
-    // },
     prev(e) {
         e.preventDefault();
         let count = document.querySelectorAll('.slide').length-1;
@@ -146,10 +82,58 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+@import "../scss/_normalize.scss";
 @import "../scss/_vars.scss";
 @import "../scss/_mixins.scss";
+@font-face {
+  font-family: 'Ropa Sans';
+  src: url('../assets/fonts/Ropa_Sans/RopaSans-Regular.ttf');
+}
+@font-face {
+  font-family: 'Ropa Sans Italic';
+  src: url('../assets/fonts/Ropa_Sans/RopaSans-Italic.ttf');
+}
 
+html,
+body {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  font-size: 62.5%; // ~10px
+}
+body {
+  font-family: 'Ropa Sans', sans-serif;
+  @include rem(1.4);
+  color: $colorText3;
+  line-height: 1.4;
+  background-color: $colorBg6;
+  background: linear-gradient(0deg, $colorBg6, $colorBg4);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: $colorBg5;
+}
+ul {
+  margin: 0;
+  list-style: none;
+}
+li {
+  display: inline-block;
+}
+p {
+  margin-bottom: 10px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+input {
+  @include rem(1.4);
+}
+.wrapper {
+  margin: 0 auto;
+}
 .message {
     padding-top: 150px;
     text-align: center;
