@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search.vue renders correctly 1`] = `
+<section
+  class="search"
+>
+  <form>
+    <label
+      class="search__label"
+      for="searchInput"
+    >
+      Search: 
+    </label>
+     
+    <input
+      class="search__input js-search"
+      disabled="disabled"
+      id="searchInput"
+      placeholder="Type anything..."
+      type="search"
+    />
+  </form>
+</section>
+`;
+
+exports[`Search.vue renders correctly after changing the search state 1`] = `
+<section
+  class="search"
+>
+  <form>
+    <label
+      class="search__label"
+      for="searchInput"
+    >
+      Search: 
+    </label>
+     
+    <input
+      class="search__input js-search"
+      disabled="disabled"
+      id="searchInput"
+      placeholder="Type anything..."
+      type="search"
+    />
+  </form>
+</section>
+`;

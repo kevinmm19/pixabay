@@ -44,9 +44,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Tech Stack
 
-* Vue
+* Vue & Vuex
 * JavaScript ES6+
 * SCSS
+* HTML5
 * Jest
 * NPM
 

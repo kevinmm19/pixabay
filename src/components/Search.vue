@@ -41,7 +41,8 @@ export default {
     async find() {
         try {
             let error429 = false;
-            const url = 'https://pixabay.com/api/?key=9656065-a4094594c34f9ac14c7fc4c39&per_page=6&q=' + this.search;
+            const query = this.search.trim().replace(/[|&;$%@"<>()+=,]/g, '');
+            const url = 'https://pixabay.com/api/?key=9656065-a4094594c34f9ac14c7fc4c39&per_page=6&q=' + query;
             const headers = new Headers({
                 'Content-Type': 'text/plain'
             });
@@ -52,7 +53,10 @@ export default {
             });
             if (response !== undefined && response.ok) {
                 const images = await response.json();
-                this.$store.commit('setImages', images.hits);
+                this.$store.commit({
+                  type: 'setImages',
+                  list: images.hits
+                });
             } else {
                 error429 = true;
             }
@@ -84,7 +88,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import "../scss/_vars.scss";
 @import "../scss/_mixins.scss";
 .search {
@@ -105,22 +109,6 @@ export default {
         width: 68%;
         @include respond-to($tablet) {
             width: 50%;
-        }
-    }
-    &__reset {
-        padding-bottom: 2px;
-        height: 44px;
-        width: 25%;
-        font-size: 18px;
-        color: $colorText1;
-        background-color: $colorBg1;
-        border: 2px solid $colorText1;
-        &:hover, &:focus {
-            color: $colorBg1;
-            background-color: $colorBg5;
-        }
-        @include respond-to($tablet) {
-            width: 10%;
         }
     }
 }

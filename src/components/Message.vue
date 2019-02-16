@@ -7,12 +7,12 @@ export default {
   name: 'Message',
   props: {
     msg: String,
-    css: String,
+    css: String
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import "../scss/_vars.scss";
 .message {
   font-size: 25px;
