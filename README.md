@@ -60,5 +60,3 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 Kevin Martínez Montero
 
 Senior Front End Engineer
-
-Currently living in Costa Rica
