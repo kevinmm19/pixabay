@@ -7,6 +7,7 @@
 
 <script>
 import { mapState } from 'vuex';
+
 export default {
   name: 'NavBtn',
   props: {
@@ -47,28 +48,28 @@ export default {
 
 <style lang="scss" scoped>
 @import "../scss/_vars.scss";
-@import "../scss/_mixins.scss";
+
 .btn {
     position: absolute;
     top: 28%;
-    padding: 10px 0 5px 20px;
+    padding: 1rem 0 .5rem 2rem;
     z-index: 1;
     border-radius: 75px 0 0 75px;
     background-color: rgba(255,255,255,.5);
-    @include respond-to(420px) {
+    @media (min-width: 420px) {
         top: 32%;
     }
-    @include respond-to(540px) {
+    @media (min-width: 540px) {
         top: 38%;
     }
-    @include respond-to($tablet) {
+    @media (min-width: 768px) {
         position: static;
         display: inline-block;
         margin: 0 auto;
         padding: 0;
-        height: 44px;
-        width: 100px;
-        font-size: 18px;
+        height: 4.4rem;
+        width: 10rem;
+        font-size: 1.8rem;
         color: $colorText1;
         background-color: $colorBg1;
         border-radius: 0;
@@ -76,25 +77,25 @@ export default {
     }
     &__text {
         display: none;
-        @include respond-to($tablet) {
+        @media (min-width: 768px) {
             display: inline-block;
         }
     }
     &__img {
         width: 75%;
-        @include respond-to($tablet) {
+        @media (min-width: 768px) {
             display: none;
         }
     }
     &--prev {
-        margin-right: 10px;
+        margin-right: 1rem;
         transform: rotateY(180deg);
-        @include respond-to($tablet) {
+        @media (min-width: 768px) {
             transform: none;
         }
     }
     &--next {
-        right: 10px;
+        right: 1rem;
     }
 }
 </style>

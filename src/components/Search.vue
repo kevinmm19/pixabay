@@ -90,24 +90,24 @@ export default {
 
 <style lang="scss" scoped>
 @import "../scss/_vars.scss";
-@import "../scss/_mixins.scss";
+
 .search {
     position: fixed;
-    padding: 20px 0;
+    padding: 2rem 0;
     width: 100%;
     text-align: center;
     background-color: $colorBg1;
     z-index: 1;
     &__label {
         color: $colorBg5;
-        font-size: 18px;
-        padding-right: 5px;
+        font-size: 1.8rem;
+        padding-right: .5rem;
     }
     &__input {
-        padding: 10px;
-        height: 20px;
+        padding: 1rem;
+        height: 2rem;
         width: 68%;
-        @include respond-to($tablet) {
+        @media (min-width: 768px) {
             width: 50%;
         }
     }

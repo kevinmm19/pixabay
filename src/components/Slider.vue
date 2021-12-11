@@ -20,6 +20,7 @@
 <script>
 import { mapState } from 'vuex';
 import NavBtn from "./NavBtn.vue";
+
 export default {
   name: 'Slider',
   components: {
@@ -38,53 +39,43 @@ export default {
 
 <style lang="scss" scoped>
 @import "../scss/_vars.scss";
-@import "../scss/_mixins.scss";
+
+.slider {
+    padding: 7.5rem 1rem 0;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-evenly;
+}
 .slide {
     display: none;
-    @include respond-to($tablet) {
+    @media (min-width: 768px) {
         &:before,
         &:after {
             content: none;
         }
     }
-    &r {
-        padding: 120px 10px 20px;
-        display: flex;
-        flex-flow: row wrap;
-        align-content: space-evenly;
-    }
     &.active {
         display: inline-block;
         position: relative;
-        margin: 0 auto 20px;
+        margin: 0 auto 2rem;
         height: auto;
         width: 100%;
         overflow: hidden;
-        @include respond-to($tablet) {
-            height: 250px;
-            width: 300px;
-        }
     }
     &__img {
         height: auto;
-        max-height: 400px;
+        max-height: 52rem;
         width: 100%;
-        @include respond-to($tablet) {
-            width: 100%;
-            height: 200px;
-        }
     }
     &__caption {
-        width: 300px;
-        font-size: 20px;
+        margin: .5rem auto 0;
+        font-size: 2rem;
         color: $colorBg5;
+        text-align: center;
         text-overflow: ellipsis;
         text-transform: capitalize;
         white-space: nowrap;
         overflow: hidden;
-        @include respond-to($tablet) {
-            text-align: center;
-        }
     } 
 }
 </style>

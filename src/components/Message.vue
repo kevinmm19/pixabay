@@ -14,11 +14,12 @@ export default {
 
 <style lang="scss" scoped>
 @import "../scss/_vars.scss";
+
 .message {
-  font-size: 25px;
+  font-size: 2.5rem;
   color: $colorText1;
   &--big {
-    font-size: 40px;
+    font-size: 4rem;
   }
 }
 </style>
